@@ -34,7 +34,6 @@ export default function MainPage(){
                     },
                     error => {
                         setIsLoaded(true)
-                        console.log('Eba')
                         console.log(error)
                     }
                 )

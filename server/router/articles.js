@@ -29,7 +29,7 @@ router.get('/:id', async (req, res)=>{
 
         let isArticleSent = false
         articles.forEach(article => {
-            if(article.id == articleId){
+            if(article.id == articleId && !isArticleSent){
                 res.json(article)
                 isArticleSent = true
             }

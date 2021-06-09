@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/article">
+          <Route path="/article/:article">
             <Article />
           </Route>
           <Route path="/">
