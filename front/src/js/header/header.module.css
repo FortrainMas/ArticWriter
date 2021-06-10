@@ -1,0 +1,61 @@
+a{
+    text-decoration: none;
+}
+
+.container{
+    background: #a8dadc;
+    /* padding: 1em; */
+    width: 100vw;
+    height: 6em;
+    overflow: hidden;
+    transition: height 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main{
+    height: 6em;
+}
+
+.container h1{
+    font-family: 'VampiroOne', 'Arial';
+    color: #e63946;
+    font-size: 3em;
+    padding: 0.1em;
+}
+
+.dropdown{
+    color: #e63946;
+    display: block;
+}
+
+.container:hover{
+    height: 10em;
+    transition: height 0.5s;
+}
+
+.dropdownMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 20em;
+}
+
+.dropdownMenu h4{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color: #e63946;
+}
+
+@media screen and (max-width: 320px) {
+    .dropdownMenu{
+        flex-direction: column;
+    }
+    .container h1{
+        font-size: 2.5em;
+    }
+    .container{
+        height: 5em;
+    }
+}

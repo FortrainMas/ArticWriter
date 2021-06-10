@@ -1,5 +1,5 @@
 .container{
-    background-color: #eff1f3;
+    background-color: #a8dadc;
     width: 25em;
     min-height:  9em;
     margin-bottom: 2%;
@@ -31,13 +31,15 @@
 .info h4{
     font-size: 1.7em;
     text-align: left;
-    color: black;
+    color: #000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .info h6{
     font-size: 1em;
-    color: black;
+    color: #1d3557;
     text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .author{

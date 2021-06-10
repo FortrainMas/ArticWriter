@@ -36,6 +36,8 @@
 .info h2{
     font-size: 1.9em;
     text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .container p{

@@ -1,6 +1,6 @@
 import MainPage from './js/mainPage/mainPage'
 import Article from './js/article_page/articlePage'
-
+import Header from './js/header/header'
 
 import logo from './logo.svg';
 import './App.css';
@@ -14,7 +14,9 @@ import {
 function App() {
   return (
     <div className="App">
+      
       <Router>
+      <Header />
         <Switch>
           <Route path="/article/:article">
             <Article />

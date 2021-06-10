@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+@font-face {
+  font-family: 'VampiroOne';
+  src:  url('./fonts//VampiroOne-Regular.ttf');
 }
