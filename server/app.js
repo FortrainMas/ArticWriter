@@ -5,9 +5,11 @@ const users = require('./router/users')
 const express = require('express')
 const cors = require('cors')
 
+var bodyParser = require('body-parser')
+
 const app = express()
 app.use(cors())
-
+app.use(bodyParser.json())
 
 //Send image that was requested
 app.use('/img', images)
