@@ -1,20 +1,21 @@
 .container{
     background-color: #eff1f3;
-    width: 30em;
-    min-height:  6em;
+    width: 25em;
+    min-height:  9em;
     margin-bottom: 2%;
     display: flex;
     flex: row;
     align-items: center;
     justify-content: flex-start;
     padding: 1em;
+    border-radius: 16px;
 }
 
 .img{
     background-size: contain;
     background-repeat: no-repeat;
     max-width: 4.3em;
-    height: 5em;
+    height: 6em;
     margin-left: 0.5em;
     padding-right: 1em;
 }
@@ -28,7 +29,7 @@
 }
 
 .info h4{
-    font-size: 1.4em;
+    font-size: 1.7em;
     text-align: left;
     color: black;
 }
@@ -48,8 +49,27 @@
 }
 
 .authorImg{
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.6em;
+    height: 1.6em;
     margin-right: 0.3em;
     border-radius: 100%;
+}
+
+@media screen and (max-width: 520px) {
+  .container{
+      width: 90vw;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .container{
+      width: 42em;
+      min-height: 7em;
+  }
+  .info h4{
+      font-size: 2em;
+  }
+  .info h6{
+      font-size: 1.4em;
+  }
 }
