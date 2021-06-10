@@ -29,7 +29,7 @@ export default function Post({content}){
     })
 
     return(
-        <Link to={`/article/${content.id}`} style={{ textDecoration: 'none' }}>
+        <a href={`/article/${content.id}`} style={{ textDecoration: 'none' }}>
             <div className={styles.container}>
                 {
                     [''].map(()=>{
@@ -48,6 +48,6 @@ export default function Post({content}){
                     </div>
                 </div>
             </div>
-        </Link>
+        </a>
     )
 }

@@ -1,4 +1,5 @@
 import styles from './articlePage.module.css'
+import Post from '../post/post'
 
 import {useEffect, useState} from 'react'
 import {  useParams, withRouter } from "react-router-dom"
@@ -11,12 +12,18 @@ function Article(){
 
     const [article, setArticle] = useState({Content:''})
     const [author, setAuthor] = useState({})
+    const [sideArticles, setSideArticles] = useState([])
 
     const [isArticleLoaded, setIsArticleLoaded] = useState(false)
     const [isAuthorInfoLoaded, setIsAuthorInfoLoaded] = useState(false)
+    const [areSideArticlesLoaded, setAreSideArticlesLoaded] = useState(false)
 
+
+    //Loads article by ID. If article was successfully loaded, loads the article's author.
+    //After that loads side articles
     useEffect(()=>{
         if(!isArticleLoaded){
+            //Load the main article of the page
             fetch(`http://localhost:2000/articles/${params.article}`)
                 .then(res=>{
                     return res.json()})
@@ -47,6 +54,24 @@ function Article(){
                     }
                 )
             }
+
+            //Load side articles
+            if(!areSideArticlesLoaded){
+                fetch(`http://localhost:2000/articles`)
+                .then(res=>{
+                    return res.json()})
+                .then(
+                    result=>{
+                        console.log(result)
+                        setSideArticles(result)
+                        setAreSideArticlesLoaded(true)
+                    },
+                    error => {
+                        console.log(error)
+                        setAreSideArticlesLoaded(true)
+                    }
+                )
+            }
         }
         
     })
@@ -63,11 +88,21 @@ function Article(){
             </div>
 
             <div className={styles.content}>
-            {
-                article.Content.split('\n').map((x,i)=>{
-                    return <p key={i}>{x}</p>
-                })
-            }
+                <div className = {styles.text}>
+                    {
+                        article.Content.split('\n').map((x,i)=>{
+                            return <p key={i}>{x}</p>
+                        })
+                    }
+                </div>
+                <div className={styles.sideArticles}>
+                    {
+                        sideArticles.map((x,i)=>{
+                            console.log(x)
+                            return <Post content={x} key={i} />
+                        })
+                    }
+                </div>
             </div>
         </div>
     )
