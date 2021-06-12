@@ -1,0 +1,40 @@
+.container{
+    width: 100vw;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1{
+    margin-bottom: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    justify-content: space-around;
+}
+
+.form input{
+    font-size: 0.9em;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.form input[type="submit"]{
+    background-color: #e63946;
+    border: none;
+    outline: none;
+    font-size: 2em;
+    color: white;
+    border-radius: 10px;
+}
+
+.invalid{
+    border-color:#e63946 !important;
+}

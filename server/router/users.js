@@ -44,7 +44,7 @@ router.post('/create', async (req, res)=>{
     console.log(req.body)
     const user = req.body
     if(!user.name || !user.surname || !user.login || !user.password){
-        res.status(400).json({error: "User isn't valid"})
+        res.status(400).json({"Status":"Error", Error: "User isn't valid"})
     }else{
         const  today = new Date();
         const  d = today.getDate();
@@ -60,7 +60,7 @@ router.post('/create', async (req, res)=>{
         users.push(user)
         fs.writeFile('./assets/users.json', JSON.stringify(users), ()=>{})
 
-        res.send('Success')
+        res.json({"Status": "Success", "Error":""})
     }
 })
 
@@ -68,6 +68,14 @@ router.post('/create', async (req, res)=>{
 //If find sends user, in other way - false.
 router.post('/check', async (req, res) => {
     let {login, password} = req.body
+
+    if(login == undefined || password == undefined){
+        res.send(false)
+        return
+    }
+
+
+    console.log(`Login: ${login}; password: ${password}`)
     password = await sha256(password)
     let flag = false
 
