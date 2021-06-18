@@ -39,7 +39,7 @@ export default function SignIn(){
                     if(result == false){
                         setIsInvalidData(true)
                     }else{
-                        cookies.set('login', '', {path: '/account'})
+                        cookies.set('login', login, {path: '/'})
                         cookies.set('password', password, {path: '/'})
                         history.push('/account')
                     }

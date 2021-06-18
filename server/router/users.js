@@ -53,7 +53,7 @@ router.post('/create', async (req, res)=>{
         const  m = today.getMilliseconds();
         const id = `${d}${h}${s}${m}${user.login}`
         user.id = id
-        user.photo = 'user.jpg'
+        user.photo = 'user.png'
         user.password = await sha256(user.password)
 
         const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
@@ -87,6 +87,37 @@ router.post('/check', async (req, res) => {
     });
 
     res.send(flag)
+})
+
+router.post('/update', async (req, res) => {
+    let {login, password, updatedUser} = req.body
+
+    console.log('fuck')
+    if(login == undefined || password == undefined || updatedUser == undefined){
+        console.log(`Login: ${login}; password: ${password}; user: ${updatedUser}`)
+        res.send(false)
+        return
+    }
+
+    password = await sha256(password)
+    let flag = false
+
+    const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
+    const updatedUsers = users.map(user => {
+        if(user.login == login && user.password == password){
+            flag = updatedUser
+            console.log('asfasf')
+            return {...user, ...updatedUser}
+        }
+        return user
+    });
+    
+    console.log(updatedUser)
+    
+    fs.writeFile('./assets/users.json', JSON.stringify(updatedUsers), ()=>{})
+
+    res.send(updatedUser)
+
 })
 
 module.exports = router

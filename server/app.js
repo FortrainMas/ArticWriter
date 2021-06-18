@@ -6,9 +6,13 @@ const express = require('express')
 const cors = require('cors')
 
 var bodyParser = require('body-parser')
+const fileupload = require("express-fileupload");
+
 
 const app = express()
 app.use(cors())
+app.use(fileupload()); 
+
 app.use(bodyParser.json())
 
 //Send image that was requested

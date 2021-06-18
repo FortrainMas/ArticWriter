@@ -39,7 +39,9 @@ export default function SignUp(){
                     console.log(result)
                     if(result.Status == 'Success'){
                         cookies.set('login', login, { path: '/account' })
+                        localStorage.setItem('login', login);
                         cookies.set('password', password, { path: '/account' })
+                        localStorage.setItem('password', password);
                         history.push('/account')
                     }else{
                         console.log('Nu')

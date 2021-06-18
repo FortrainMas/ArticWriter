@@ -1,0 +1,85 @@
+input[type="file"]{
+    display: none;
+}
+
+.container *{
+    padding: 5px;
+}
+
+.userPhoto{
+    width: 10em;
+    height: 10em;
+    cursor: pointer;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.userData{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.userProfileDataBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profileData{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profileData label{
+    margin-left: 5px;
+    margin-bottom: -0.5em;
+    z-index: 9999;
+    background-color: white;
+}
+
+.profileData input{
+    font-size: 2em;
+}
+
+
+.createArticle{
+    font-size: 1.2em;
+    width: 30%;
+    background-color: #e63946;
+    color: white;
+    outline: none;
+    border: 5px solid #a8dadc;
+    border-radius: 15px;
+}
+
+
+@media screen and (max-width: 1000px){
+    .createArticle{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 650px){
+
+    .container{
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    .userData{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profileData input{
+        font-size: 1em;
+    }
+
+    .createArticle{
+        width: 90%;
+    }
+}

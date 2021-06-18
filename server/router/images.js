@@ -6,6 +6,7 @@ const path = require('path')
 
 
 
+
 //Send image. 
 //Image name have to be in query. Just like /img?img=yourImageName.jpg
 router.get('/', async (req, res)=>{
@@ -19,6 +20,25 @@ router.get('/', async (req, res)=>{
             res.sendFile(path.resolve(`${__dirname}/../assets/${req.query.img}`))
         }
     })
+})
+
+router.post('/load', async(req, res) => {
+    console.log('er')
+    const file = req.files
+    const filename=`${new Date().getTime()}_${req.files.img.name}`
+    console.log(req.body)
+
+    console.log(file.mv)
+    file.img.mv(`assets/${filename}`)
+    res.json({filename})
+    // req.busboy.on('file', function (fieldname, file, filename) {
+    //     console.log("Uploading: " + filename); 
+    //     fstream = fs.createWriteStream(__dirname + '../assets/' + filename);
+    //     file.pipe(fstream);
+    //     fstream.on('close', function () {
+    //         res.redirect('back');
+    //     });
+    // })
 })
 
 module.exports = router
