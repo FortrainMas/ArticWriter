@@ -56,8 +56,9 @@ router.post('/create', async (req,res) => {
         id: `${title}_${(new Date()).getTime()}`,
         AuthorId: author.id,
         Rand: 0,
-        Title,
-        Content
+        Title: title,
+        Content: content,
+        Photo: photo||undefined
     }
 
     const articles = JSON.parse(fs.readFileSync(`./assets/articles.json`, 'utf-8', ()=>{}))
