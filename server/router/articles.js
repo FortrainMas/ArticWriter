@@ -53,11 +53,11 @@ router.post('/create', async (req,res) => {
     }
 
     const article = {
-        title,
-        content,
-        rang: 0,
         id: `${title}_${(new Date()).getTime()}`,
-        AuthorId: author.id
+        AuthorId: author.id,
+        Rand: 0,
+        Title,
+        Content
     }
 
     const articles = JSON.parse(fs.readFileSync(`./assets/articles.json`, 'utf-8', ()=>{}))
