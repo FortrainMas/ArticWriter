@@ -3,9 +3,9 @@ const router = express.Router()
 
 const fs = require('fs')
 const path = require('path')
-
-
 const {sha256} = require('crypto-hash');
+
+const {authUser} = require('./_utils')
 
 //Send list with all public users' information from server
 router.get('/', async (req, res)=>{
@@ -69,24 +69,28 @@ router.post('/create', async (req, res)=>{
 router.post('/check', async (req, res) => {
     let {login, password} = req.body
 
-    if(login == undefined || password == undefined){
-        res.send(false)
-        return
-    }
+    const response = await authUser(login, password)
+
+    req.send(response)
+
+    // if(login == undefined || password == undefined){
+    //     res.send(false)
+    //     return
+    // }
 
 
-    console.log(`Login: ${login}; password: ${password}`)
-    password = await sha256(password)
-    let flag = false
+    // console.log(`Login: ${login}; password: ${password}`)
+    // password = await sha256(password)
+    // let flag = false
 
-    const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
-    users.forEach(user => {
-        if(user.login == login && user.password == password){
-            flag = user
-        }
-    });
+    // const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
+    // users.forEach(user => {
+    //     if(user.login == login && user.password == password){
+    //         flag = user
+    //     }
+    // });
 
-    res.send(flag)
+    // res.send(flag)
 })
 
 router.post('/update', async (req, res) => {
