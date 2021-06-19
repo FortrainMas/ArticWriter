@@ -51,6 +51,10 @@ router.post('/create', async (req,res) => {
         res.status(400).json({error: 'Invalid user data'})
         return
     }
+    if(!title || !content){
+        res.status(400).json({error:'There is no content or title'})
+        return
+    }
 
     const article = {
         id: `${title}_${(new Date()).getTime()}`,

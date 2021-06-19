@@ -41,27 +41,30 @@ router.get('/:id', async (req, res)=>{
 })
 
 router.post('/create', async (req, res)=>{
-    console.log(req.body)
+
     const user = req.body
     if(!user.name || !user.surname || !user.login || !user.password){
         res.status(400).json({"Status":"Error", Error: "User isn't valid"})
-    }else{
-        const  today = new Date();
-        const  d = today.getDate();
-        const  h = today.getHours();
-        const  s = today.getSeconds();
-        const  m = today.getMilliseconds();
-        const id = `${d}${h}${s}${m}${user.login}`
-        user.id = id
-        user.photo = 'user.png'
-        user.password = await sha256(user.password)
-
-        const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
-        users.push(user)
-        fs.writeFile('./assets/users.json', JSON.stringify(users), ()=>{})
-
-        res.json({"Status": "Success", "Error":""})
+        return
     }
+
+    //Set default user photo, hash his password and make an id
+    user.id = `${(new Date()).getTime()}${user.login}`
+    user.photo = 'user.png'
+    user.password = await sha256(user.password)
+
+    //Save user in the user.json
+    const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
+    users.push(user)
+    fs.writeFile('./assets/users.json', JSON.stringify(users), (err)=>{
+        if(err){
+            res.status(500).json({error: 'Server side error'})
+        }else{
+            res.status(200).json({"Status": "Success", "Error":""})
+        }
+    })
+    
+    
 })
 
 //Get login and password. Then hash password and trying to find person with this data in users.json.
@@ -71,32 +74,12 @@ router.post('/check', async (req, res) => {
 
     const response = await authUser(login, password)
 
-    req.send(response)
-
-    // if(login == undefined || password == undefined){
-    //     res.send(false)
-    //     return
-    // }
-
-
-    // console.log(`Login: ${login}; password: ${password}`)
-    // password = await sha256(password)
-    // let flag = false
-
-    // const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
-    // users.forEach(user => {
-    //     if(user.login == login && user.password == password){
-    //         flag = user
-    //     }
-    // });
-
-    // res.send(flag)
+    res.send(response)
 })
 
 router.post('/update', async (req, res) => {
     let {login, password, updatedUser} = req.body
 
-    console.log('fuck')
     if(login == undefined || password == undefined || updatedUser == undefined){
         console.log(`Login: ${login}; password: ${password}; user: ${updatedUser}`)
         res.send(false)
@@ -104,19 +87,15 @@ router.post('/update', async (req, res) => {
     }
 
     password = await sha256(password)
-    let flag = false
 
     const users = JSON.parse(fs.readFileSync(`./assets/users.json`))
     const updatedUsers = users.map(user => {
         if(user.login == login && user.password == password){
-            flag = updatedUser
-            console.log('asfasf')
             return {...user, ...updatedUser}
         }
         return user
     });
     
-    console.log(updatedUser)
     
     fs.writeFile('./assets/users.json', JSON.stringify(updatedUsers), ()=>{})
 

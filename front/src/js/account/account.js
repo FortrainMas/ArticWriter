@@ -4,7 +4,7 @@ import {useState, useEffect, useRef} from 'react'
 
 import { BoxLoading } from 'react-loadingg';
 
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -96,13 +96,10 @@ export default function Account(){
 
     const loadImage = ({target})=>{
         const image = target.files[0]
-        const login = cookies.get('login')
-        const password = cookies.get('password')
         
 
         let formData = new FormData();
         formData.append('img', image);
-        formData.append('password', 'John123');
 
         const queryBody = {
             method: 'POST',
@@ -138,9 +135,11 @@ export default function Account(){
                     </div>
                 </div>
             </div>
-            <button className={styles.createArticle}>
-                <h3>Create Article</h3>
-            </button>
+            <Link to="/create-article">
+                <button className={styles.createArticle}>
+                    <h3>Create Article</h3>
+                </button>
+            </Link>
         </div>
     )
     

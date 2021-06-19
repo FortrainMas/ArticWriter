@@ -4,6 +4,7 @@ import Header from './js/header/header'
 import Account from './js/account/account'
 import SignIn from './js/signin/signIn'
 import SignUp from './js/signup/signup'
+import CreateArticle from './js/create_article/createArticle'
 
 import logo from './logo.svg';
 import './App.css';
@@ -21,6 +22,9 @@ function App() {
       <Router>
       <Header />
         <Switch>
+          <Route path="/create-article">
+            <CreateArticle />
+          </Route>
           <Route path="/article/:article">
             <Article />
           </Route>
