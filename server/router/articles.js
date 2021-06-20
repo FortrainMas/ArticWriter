@@ -4,6 +4,7 @@ const router = express.Router()
 
 const fs = require('fs')
 const path = require('path')
+const config = require('config');
 
 const {authUser} = require('./_utils')
 
@@ -73,6 +74,16 @@ router.post('/create', async (req,res) => {
         }
     })
     res.status(200).json({error: null}      )
+})
+
+router.post('/delete', async (req, res)=>{
+    const {secretKey, id} = req.body
+    const secretDeletionKey = config.get('secretDeletionKey')
+    if(secretKey == secretDeletionKey){
+        res.status(200).json({error: null})
+        return
+    }
+    res.status(400).json({'error': 'incorrect deletion key'})
 })
 
 module.exports = router

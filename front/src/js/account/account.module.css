@@ -2,6 +2,11 @@ input[type="file"]{
     display: none;
 }
 
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
 .container *{
     padding: 5px;
 }
@@ -63,9 +68,23 @@ input[type="file"]{
     color: white;
 }
 
+.logOut{
+    width: 10%;
+    color: white;
+    background-color: #e63946;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin:auto;
+}
+
 @media screen and (max-width: 1000px){
     .createArticle{
         width: 50%;
+    }
+    .logOut{
+        width: 20%;
     }
 }
 
@@ -87,5 +106,9 @@ input[type="file"]{
 
     .createArticle{
         width: 90%;
+    }
+
+    .logOut{
+        width: 40%;
     }
 }

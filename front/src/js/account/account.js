@@ -117,6 +117,12 @@ export default function Account(){
             .catch(error=>{console.log(error)})
         
     }
+
+    const logOut = () => {
+        cookies.set('login', null)
+        cookies.set('password', null)
+        history.push('/signin')
+    }
     
     return(
         <div className={styles.container}>
@@ -140,6 +146,10 @@ export default function Account(){
                     <h3>Create Article</h3>
                 </button>
             </Link>
+
+            <button className={styles.logOut} onClick={logOut}>
+                <h2>Log Out</h2>
+            </button>
         </div>
     )
     
