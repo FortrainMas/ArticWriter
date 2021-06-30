@@ -33,7 +33,6 @@ export default function CreateArticle(){
 
         
         const result = await (await fetch(`http://localhost:2000/img/load`, queryBody)).json()
-        console.log(result)
         return result.filename
     }
 

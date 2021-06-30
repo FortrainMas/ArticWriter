@@ -19,8 +19,8 @@ export default function SignIn(){
 
     const handleSubmit = (event) => {
 
-        // setRedirect(true)
 
+        console.log('sadf')
         setIsInvalidData(false)
 
         const fetchProperties = {
@@ -31,7 +31,7 @@ export default function SignIn(){
             body: JSON.stringify({login, password})
         }
 
-        fetch(`http://localhost:2000/users/check`, fetchProperties)
+        fetch(`http://localhost:2000/users/confirm`, fetchProperties)
             .then(res=>res.json())
             .then(
                 result=>{

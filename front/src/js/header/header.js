@@ -8,7 +8,7 @@ function Header(){
             <div className={styles.main}>
                 <h1>ArticWriter</h1>     
                 <div className={styles.dropdown}>
-                <span class={`material-icons-outlined`}>
+                <span className={`material-icons-outlined`}>
                     arrow_drop_down
                 </span>       
                 </div>

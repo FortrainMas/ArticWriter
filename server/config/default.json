@@ -1,3 +1,4 @@
 {
-    "secretDeletionKey": "d?nb_mK58)}_ARN8!"
+    "secretDeletionKey": "d?nb_mK58)}_ARN8!",
+    "mongoConnectionString": "mongodb+srv://Vasek:PutinVor11@cluster0.7yx4p.mongodb.net/ArticWriter?retryWrites=true&w=majority"
 }

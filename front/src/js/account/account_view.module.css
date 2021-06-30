@@ -1,0 +1,81 @@
+.container{
+    padding-top: 20px;
+
+    width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+.userPhoto{
+    width: 10em;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.userProfileDataBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profileData{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profileData input{
+    font-size: 1.4em;
+}
+
+.buttonsBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10em;
+    width: 25%;
+}
+
+.button{
+    width: 100%;
+    background-color: #e63946;
+    border: 3px solid #a8dadc;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.link{
+    width: 100%;
+}
+
+@media screen and (max-width: 700px){
+    .container{
+        flex-direction: column;
+        width: 90%;
+    }
+    .userData{
+        flex-direction: column;
+    }
+    .buttonsBlock{
+        margin-top: 20px;
+        width: 70%;
+    }
+}

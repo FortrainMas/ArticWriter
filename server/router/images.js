@@ -31,14 +31,6 @@ router.post('/load', async(req, res) => {
     console.log(file.mv)
     file.img.mv(`assets/${filename}`)
     res.json({filename})
-    // req.busboy.on('file', function (fieldname, file, filename) {
-    //     console.log("Uploading: " + filename); 
-    //     fstream = fs.createWriteStream(__dirname + '../assets/' + filename);
-    //     file.pipe(fstream);
-    //     fstream.on('close', function () {
-    //         res.redirect('back');
-    //     });
-    // })
 })
 
 module.exports = router

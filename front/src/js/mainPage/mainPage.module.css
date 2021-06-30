@@ -5,20 +5,28 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .content{
-    margin-top: 30px;
-    width: 90vw;
+    padding-top: 10px;
+    width: 85vw;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
-@media screen and (max-width: 480px) {
+
+
+@media screen and (max-width: 800px) {
     .content{
-        width: 100vw;
+        justify-content: center;
     }
   }
+
+@media screen and (max-width: 1100) {
+    .content{
+
+        width:  100vw;
+    }
+}
